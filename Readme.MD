@@ -48,13 +48,13 @@ Navigate into `src`
 cd src/
 ```
 
-Then run Alembic revision command:
+Then run Alembic (probably need to install [the alembic CLI tool](https://alembic.sqlalchemy.org/en/latest/index.html)) revision command:
 
 ```bash
 alembic revision -m 'My new migration'
 ```
 
-This will generate a new migration file inside the `patient/version`, edit this file and added the DB changes.
+This will generate a new migration file inside the `patient/version`, edit this file and add the DB table and relationship changes.
 
 For the changes to take effect, run:
 
