@@ -1,0 +1,47 @@
+version: '3.6'
+services:
+    db:
+      image: postgres:12.1-alpine
+      container_name: pg-docker
+      ports:
+        - '5432:5432'
+      environment: 
+        - POSTGRES_USER=postgres
+        - POSTGRES_PASSWORD=postgres
+        - POSTGRES_DB=postgres
+      volumes:
+        - postgres_data:/var/lib/postgresql/data/
+
+    api:
+      build: ./src
+      command: /bin/sh -c "alembic upgrade head && uvicorn app.main:app --reload --workers 1 --host 0.0.0.0 --port 8000"
+      container_name: coffee-api
+      volumes:
+        - ./src/:/usr/src/app/
+      ports:
+        - 8080:8000
+      depends_on:
+        - db
+      environment:
+        - DATABASE_URL=postgresql://postgres:postgres@db/postgres
+    
+    redis:
+      image: redis:alpine
+      ports:
+        - 6379:6379
+    
+    pgadmin:
+      image: dpage/pgadmin4
+      container_name: pgadmin
+      restart: always
+      environment:
+        PGADMIN_DEFAULT_EMAIL: "admin@admin.com"
+        PGADMIN_DEFAULT_PASSWORD: "test123!"
+        PGADMIN_LISTEN_PORT: 80
+      ports:
+        - "16543:80"
+      depends_on:
+        - db
+      
+volumes:
+  postgres_data:
