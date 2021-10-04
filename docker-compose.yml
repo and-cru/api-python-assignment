@@ -14,8 +14,8 @@ services:
 
     api:
       build: ./src
-      command: /bin/sh -c "alembic upgrade head && uvicorn app.main:app --reload --workers 1 --host 0.0.0.0 --port 8000"
-      container_name: coffee-api
+      command: /bin/sh -c "uvicorn app.main:app --reload --workers 1 --host 0.0.0.0 --port 8000"
+      container_name: patient-api
       volumes:
         - ./src/:/usr/src/app/
       ports:
@@ -23,7 +23,7 @@ services:
       depends_on:
         - db
       environment:
-        - DATABASE_URL=postgresql://postgres:postgres@db/postgre
+        - DATABASE_URL=postgresql://postgres:postgres@db/postgres
     
     pgadmin:
       image: dpage/pgadmin4
