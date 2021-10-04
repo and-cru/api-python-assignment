@@ -16,7 +16,13 @@ Please follow the below instructions to get everything set up correct and runnin
 
 Fork this repository to your GitHub profile by following the steps [here](https://guides.github.com/activities/forking/). Clone the forked repository and navigate into the base directory of the cloned repository. Ensure you can push changes to your working branch on the forked repository.
 
-Ok now that version control is all set. Let's quickly check if everything is running, inside the base project directory of the cloned project run the below command:
+Ok now that version control is all set. Let's quickly check if everything is running, inside the base project directory of the cloned project run the below commands:
+
+```bash
+mkdir db_data
+```
+
+This will create a directory for our DB data.
 
 ```bash
 docker-compose up -d --build
