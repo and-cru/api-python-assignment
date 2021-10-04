@@ -6,7 +6,7 @@ We are building an API with [FastAPI](https://fastapi.tiangolo.com/)
 
 ## Requirements
 
-This assignment relies on [Docker](https://www.docker.com/), which is a OS virtualization tool and allows for development with a containers. In order to complete this assignment, please install Docker for your respective OS [here](https://docs.docker.com/get-docker/)
+This assignment relies on [Docker](https://www.docker.com/), which is a OS virtualization tool and allows for development with containers. In order to complete this assignment, please install Docker for your respective OS [here](https://docs.docker.com/get-docker/)
 
 No need to install anything else besides Docker, all you need is a simple text editor of your choice.
 
